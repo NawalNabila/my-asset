@@ -267,7 +267,7 @@
         <div class="row align-items-center">
           <div class="col-md-12">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a th:href="@{/myasset/}">Home</a></li>
+              <li class="breadcrumb-item"><a th:href="@{/myasset/user/getAllUsers}">Home</a></li>
               <li class="breadcrumb-item"><a href="javascript: void(0)">User</a></li>
               <li class="breadcrumb-item"><a href="javascript: void(0)">User List</a></li>
             </ul>
@@ -307,60 +307,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr th:each="ob:${list}">
                   <td>
                     <div class="d-flex align-items-center">
                       <div class="flex-shrink-0">
                         <img src="../static/assets/images/user/avatar-1.jpg" th:src="@{/assets/images/user/avatar-1.jpg}" alt="user image" class="img-radius wid-40">
                       </div>
                       <div class="flex-grow-1 ms-3">
-                        <h6 class="mb-0">Airi Satou</h6>
+                        <h6 class="mb-0" th:text="${ob.name}"></h6>
                       </div>
                     </div>
                   </td>
-                  <td>airi</td>
-                  <td>airi@gmail.com</td>
+                  <td th:text="${ob.username}"></td>
+                  <td th:text="${ob.email}"></td>
                   <td><span class="badge text-bg-success">Admin</span></td>
-                  <td>
-                    <a href="#" class="avtar avtar-xs btn-link-secondary">
-                      <i data-feather="edit"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <div class="flex-shrink-0">
-                        <img src="../static/assets/images/user/avatar-2.jpg" th:src="@{/assets/images/user/avatar-2.jpg}" alt="user image" class="img-radius wid-40">
-                      </div>
-                      <div class="flex-grow-1 ms-3">
-                        <h6 class="mb-0">Ashton Cox</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>ashton</td>
-                  <td>ashton@gmail.com</td>
-                  <td><span class="badge text-bg-primary">User</span></td>
-                  <td>
-                    <a href="#" class="avtar avtar-xs btn-link-secondary">
-                      <i data-feather="edit"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <div class="flex-shrink-0">
-                        <img src="../static/assets/images/user/avatar-2.jpg" th:src="@{/assets/images/user/avatar-3.jpg}" alt="user image" class="img-radius wid-40">
-                      </div>
-                      <div class="flex-grow-1 ms-3">
-                        <h6 class="mb-0">Bradley Greer</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td>bradley</td>
-                  <td>bradley@gmail.com</td>
-                  <td><span class="badge text-bg-primary">User</span></td>
                   <td>
                     <a href="#" class="avtar avtar-xs btn-link-secondary">
                       <i data-feather="edit"></i>

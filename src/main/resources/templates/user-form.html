@@ -270,8 +270,8 @@
           <div class="row align-items-center">
             <div class="col-md-12">
               <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a th:href="@{/myasset/}"Home</a></li>
-                <li class="breadcrumb-item"><a th:href="@{/myasset/}">User</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/myasset/user/getAllUsers}"Home</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/myasset/user/getAllUsers}">User</a></li>
                 <li class="breadcrumb-item"><a href="javascript: void(0)">Add User</a></li>
               </ul>
             </div>
@@ -295,15 +295,15 @@
               <h5>Add New User</h5>
             </div>
             <div class="card-body">
-              <form class="validate-me" id="validate-me" data-validate>
+              <form th:action="@{/myasset/user/save}" method="post" class="validate-me" id="validate-me" data-validate>
                 
                 <div class="mb-3 row">
                     <label class="col-lg-4 col-form-label text-lg-end">Nama:</label>
                     <div class="col-lg-6">
                       <input
                         type="text"
-                        name="nama"
-                        id="nama"
+                        name="name"
+                        id="name"
                         class="form-control"
                         required
                       />
@@ -342,19 +342,22 @@
                   <div class="col-lg-6">
                     <select class="form-control" data-trigger name="choices-single-default" id="choices-single-default">
                         <option value="">Pilih Role</option>
-                        <option value="Choice 1">Admin</option>
-                        <option value="Choice 2">User</option>
+                        <option value="admin">Admin</option>
+                        <option value="admin">User</option>
                       </select>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-lg-4 col-form-label"></div>
                   <div class="col-lg-6">
-                    <button class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <a th:href="@{/myasset/user/getAllUsers}" class="btn btn-secondary">Cancel</a>
                   </div>
                 </div>
               </form>
+            </div>
+            <div th:if="${message!=null}"  class="card-footer bg-white text-info">
+              <span th:text="${message}"></span>
             </div>
           </div>
         </div>
