@@ -10,6 +10,9 @@
         <module name="myasset" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="myasset" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
