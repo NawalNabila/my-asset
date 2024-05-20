@@ -1,14 +1,14 @@
 package com.nabilla.myasset.exception;
 
-public class UserNotFoundException extends RuntimeException {
+public class DataNotFoundException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    public UserNotFoundException() {
+    public DataNotFoundException() {
         super();
     }
 
-    public UserNotFoundException(String customMessage) {
+    public DataNotFoundException(String customMessage) {
         super(customMessage);
     }
 }

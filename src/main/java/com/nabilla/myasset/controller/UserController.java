@@ -3,49 +3,58 @@ package com.nabilla.myasset.controller;
 import com.nabilla.myasset.model.User;
 import com.nabilla.myasset.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("/myasset")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @GetMapping("/")
-    public String showHomePage() {
+    public String viewHomepage(
+            Model model
+    ) {
+        List<User> users= userService.getList();
+        model.addAttribute("list", users);
+
         return "index";
     }
 
-    @GetMapping("/user/form")
-    public String showUserFormPage() {
+    @GetMapping("/create")
+    public String viewCreateFormPage() {
         return "user-form";
     }
 
-    @PostMapping("/user/save")
+    @PostMapping("/save")
     public String saveUser(
             @ModelAttribute User user,
             Model model
     ) {
-        userService.saveUser(user);
-        Long id = userService.saveUser(user).getId();
-        String message = "Record with id : '"+id+"' is saved successfully !";
-        model.addAttribute("message", message);
-        return "user-form";
+        String password = "1234dummy";
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(password);
+        user.setPassword(encodedPassword);
+
+        userService.save(user);
+
+        return "redirect:/users/";
     }
 
-    @GetMapping("/user/getAllUsers")
-    public String getAllUsers(
-            @RequestParam(value = "message", required = false) String message,
-            Model model
-    ) {
-        List<User> users= userService.getAllUsers();
-        model.addAttribute("list", users);
-        model.addAttribute("message", message);
-        return "index";
+    @GetMapping("/edit/{id}")
+    public ModelAndView viewEditFormPage(@PathVariable(name = "id") Long id) {
+        ModelAndView mav = new ModelAndView("user-edit-form");
+
+        User user = userService.getById(id);
+        mav.addObject("user", user);
+
+        return mav;
     }
 }

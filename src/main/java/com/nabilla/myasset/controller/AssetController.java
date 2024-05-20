@@ -15,7 +15,7 @@ import org.springframework.web.multipart.support.MultipartFilter;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/myasset/report")
+@RequestMapping("/assets")
 public class AssetController {
 
     @Autowired
