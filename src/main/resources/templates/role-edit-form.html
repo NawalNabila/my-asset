@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <!-- [Head] start -->
+
 <head>
-    <title>User List | My Asset</title>
+    <title>Role List | My Asset</title>
     <!-- [Meta] -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
@@ -18,16 +19,13 @@
     <meta name="author" content="Phoenixcoded"/>
 
     <!-- [Favicon] icon -->
-    <link rel="icon" type="image/x-icon"
-          th:href="@{/images/favicon.svg}"/>
+    <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.svg}"/>
 
     <link rel="stylesheet" th:href="@{/css/plugins/style.css}">
     <!-- [Font] Family -->
-    <link rel="stylesheet" id="main-font-link"
-          th:href="@{/fonts/inter/inter.css}"/>
+    <link rel="stylesheet" id="main-font-link" th:href="@{/fonts/inter/inter.css}"/>
     <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet"
-          th:href="@{/fonts/tabler-icons.min.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/tabler-icons.min.css}"/>
     <!-- [Feather Icons] https://feathericons.com -->
     <link rel="stylesheet" th:href="@{/fonts/feather.css}"/>
     <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
@@ -35,8 +33,7 @@
     <!-- [Material Icons] https://fonts.google.com/icons -->
     <link rel="stylesheet" th:href="@{/fonts/material.css}"/>
     <!-- [Template CSS Files] -->
-    <link rel="stylesheet" id="main-style-link"
-          th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" id="main-style-link" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/css/style-preset.css}"/>
 </head>
 <!-- [Head] end -->
@@ -234,7 +231,7 @@
                             aria-expanded="false"
                     >
                         <img
-                             th:src="@{/images/user/avatar-2.jpg}" alt="user-image" class="user-avtar"/>
+                                th:src="@{/images/user/avatar-2.jpg}" alt="user-image" class="user-avtar"/>
                     </a>
                     <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
                         <div class="dropdown-header d-flex align-items-center justify-content-between">
@@ -275,6 +272,7 @@
 </header>
 <!-- [ Header ] end -->
 
+
 <!-- [ Main Content ] start -->
 <div class="pc-container">
     <div class="pc-content">
@@ -285,13 +283,13 @@
                     <div class="col-md-12">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0)">User</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0)">User List</a></li>
+                            <li class="breadcrumb-item"><a th:href="@{/roles/}">Role</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0)">Edit Role</a></li>
                         </ul>
                     </div>
                     <div class="col-md-12">
                         <div class="page-header-title">
-                            <h2 class="mb-0">User List</h2>
+                            <h2 class="mb-0">Edit Role</h2>
                         </div>
                     </div>
                 </div>
@@ -299,72 +297,50 @@
         </div>
         <!-- [ breadcrumb ] end -->
 
+
         <!-- [ Main Content ] start -->
         <div class="row">
-            <div class="col-12">
-                <div class="card table-card">
+            <!-- [ Form Validation ] start -->
+            <div class="col-sm-12">
+                <div class="card">
                     <div class="card-header">
-                        <div class="d-sm-flex align-items-center justify-content-between">
-                            <h5 class="mb-3 mb-sm-0">User List</h5>
-                            <div>
-                                <a th:href="@{/users/create}" class="btn btn-shadow btn-primary d-inline-flex">
-                                    <svg class="pc-icon">
-                                        <use xlink:href="#custom-add-outline"></use>
-                                    </svg>
-                                    Add User</a>
-                            </div>
-                        </div>
+                        <h5>Edit Role</h5>
                     </div>
-                    <div class="card-body pt-3">
-                        <div class="table-responsive">
-                            <table class="table table-hover" id="pc-dt-simple">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="ob:${list}">
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-shrink-0">
-                                                <img th:src="@{/images/user/avatar-1.jpg}" alt="user image"
-                                                     class="img-radius wid-40">
-                                            </div>
-                                            <div class="flex-grow-1 ms-3">
-                                                <h6 class="mb-0" th:text="${ob.name}"></h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td th:text="${ob.username}"></td>
-                                    <td th:text="${ob.email}"></td>
-                                    <td>
-                                        <span th:each="rl:${ob.roles}">
-                                            <span class="badge text-bg-success" th:text="${rl.name}"></span><br><br>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <a th:href="@{'/users/edit/' + ${ob.id}}" class="avtar avtar-xs btn-link-secondary">
-                                            <i data-feather="edit"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="card-body">
+                        <form th:action="@{/roles/save}" method="post" class="validate-me" id="validate-me" data-validate>
+                            <input type="hidden" name="id" th:value="${role.id}">
+
+                            <div class="mb-3 row">
+                                <label class="col-lg-4 col-form-label text-lg-end">Nama Role:</label>
+                                <div class="col-lg-6">
+                                    <input
+                                            type="text"
+                                            name="name"
+                                            th:value="${role.name}"
+                                            id="name"
+                                            class="form-control"
+                                            required
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 col-form-label"></div>
+                                <div class="col-lg-6">
+                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                    <a th:href="@{/roles/}" class="btn btn-secondary">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+            <!-- [ Form Validation ] end -->
         </div>
         <!-- [ Main Content ] end -->
     </div>
 </div>
 <!-- [ Main Content ] end -->
-
 <footer class="pc-footer">
     <div class="footer-wrapper container-fluid">
         <div class="row">
@@ -410,12 +386,6 @@
 
 <script>
     main_layout_change('vertical');
-</script>
-
-
-<script type="module">
-    import {DataTable} from "/js/plugins/module.js"
-    window.dt = new DataTable("#pc-dt-simple");
 </script>
 
 </body>

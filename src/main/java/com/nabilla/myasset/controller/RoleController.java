@@ -34,8 +34,7 @@ public class RoleController {
 
     @PostMapping("/save")
     public String saveRole(
-            @ModelAttribute Role role,
-            Model model
+            @ModelAttribute Role role
     ) {
         roleService.save(role);
 

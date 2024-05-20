@@ -1,119 +1,129 @@
 <!doctype html>
-<html lang="en">
-  <!-- [Head] start -->
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<!-- [Head] start -->
 
-  <head>
+<head>
     <title>Login | My Asset</title>
     <!-- [Meta] -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta
-      name="description"
-      content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies."
+            name="description"
+            content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies."
     />
     <meta
-      name="keywords"
-      content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard"
+            name="keywords"
+            content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard"
     />
-    <meta name="author" content="Phoenixcoded" />
+    <meta name="author" content="Phoenixcoded"/>
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="../static/assets/images/favicon.svg" type="image/x-icon" th:href="@{/assets/images/favicon.svg}"/>
+    <link rel="icon" type="image/x-icon"
+          th:href="@{/images/favicon.svg}"/>
 
     <!-- [Font] Family -->
-    <link rel="stylesheet" href="../static/assets/fonts/inter/inter.css" id="main-font-link" th:href="@{/assets/fonts/inter/inter.css}"/>
+    <link rel="stylesheet" id="main-font-link"
+          th:href="@{/fonts/inter/inter.css}"/>
     <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="../static/assets/fonts/tabler-icons.min.css" th:href="@{/assets/fonts/tabler-icons.min.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/tabler-icons.min.css}"/>
     <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="../static/assets/fonts/feather.css" th:href="@{/assets/fonts/feather.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/feather.css}"/>
     <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link rel="stylesheet" href="../static/assets/fonts/fontawesome.css" th:href="@{/assets/fonts/fontawesome.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/fontawesome.css}"/>
     <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="../static/assets/fonts/material.css" th:href="@{/assets/fonts/material.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/material.css}"/>
     <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="../static/assets/css/style.css" id="main-style-link" th:href="@{/assets/css/style.css}"/>
-    <link rel="stylesheet" href="../static/assets/css/style-preset.css" th:href="@{/assets/css/style-preset.css}"/>
-  </head>
-  <!-- [Head] end -->
-  <!-- [Body] Start -->
+    <link rel="stylesheet" id="main-style-link"
+          th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style-preset.css}"/>
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
 
-  <body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-layout="vertical" data-pc-direction="ltr" data-pc-theme_contrast="" data-pc-theme="light">
-    <!-- [ Pre-loader ] start -->
-    <div class="page-loader">
-      <div class="bar"></div>
-    </div>
-    <!-- [ Pre-loader ] End -->
+<body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-layout="vertical" data-pc-direction="ltr"
+      data-pc-theme_contrast="" data-pc-theme="light">
+<!-- [ Pre-loader ] start -->
+<div class="page-loader">
+    <div class="bar"></div>
+</div>
+<!-- [ Pre-loader ] End -->
 
-    <div class="auth-main">
-      <div class="auth-wrapper v2">
+<div class="auth-main">
+    <div class="auth-wrapper v2">
         <div class="auth-sidecontent">
-          <img src="../static/assets/images/authentication/img-auth-sideimg.jpg" th:src="@{/assets/images/authentication/img-auth-sideimg.jpg}" alt="images" class="img-fluid img-auth-side" />
+            <img th:src="@{/images/authentication/img-auth-sideimg.jpg}" alt="images"
+                 class="img-fluid img-auth-side">
         </div>
         <div class="auth-form">
-          <div class="card my-5">
-            <div class="card-body">
-              <h4 class="text-center f-w-500 mb-3">Login with your email</h4>
-              <div class="mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="Email Address" />
-              </div>
-              <div class="mb-3">
-                <input type="password" class="form-control" id="floatingInput1" placeholder="Password" />
-              </div>
-              <div class="d-flex mt-1 justify-content-between align-items-center">
-                <div class="form-check">
-                  <input class="form-check-input input-primary" type="checkbox" id="customCheckc1" checked="" />
-                  <label class="form-check-label text-muted" for="customCheckc1">Remember me?</label>
-                </div>
-                <h6 class="text-secondary f-w-400 mb-0">
-                  <a href="#"> Forgot Password? </a>
-                </h6>
-              </div>
-              <div class="d-grid mt-4">
-                <a th:href="@{/myasset/}" class="btn btn-primary">Login</a>
-              </div>
+            <div class="card my-5">
+                <form th:action="@{/login}" method="post">
+                    <div class="card-body">
+                        <h4 class="text-center f-w-500 mb-3">Login with your Username</h4>
+                        <div class="mb-3">
+                            <input type="text" name="username" class="form-control" id="floatingInput"
+                                   placeholder="Username"/>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control" id="floatingInput1"
+                                   placeholder="Password"/>
+                        </div>
+                        <div class="d-flex mt-1 justify-content-between align-items-center">
+                            <div class="form-check">
+                                <input class="form-check-input input-primary" type="checkbox" id="customCheckc1"
+                                       checked=""/>
+                                <label class="form-check-label text-muted" for="customCheckc1">Remember me?</label>
+                            </div>
+                            <h6 class="text-secondary f-w-400 mb-0">
+                                <a href="#"> Forgot Password? </a>
+                            </h6>
+                        </div>
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-    <!-- [ Main Content ] end -->
-    <!-- Required Js -->
-    <script src="../static/assets/js/plugins/popper.min.js" th:src="@{/assets/js/plugins/popper.min.js}"></script>
-    <script src="../static/assets/js/plugins/simplebar.min.js" th:src="@{/assets/js/plugins/simplebar.min.js}"></script>
-    <script src="../static/assets/js/plugins/bootstrap.min.js" th:src="@{/assets/js/plugins/bootstrap.min.js}"></script>
-    <script src="../static/assets/js/fonts/custom-font.js" th:src="@{/assets/js/fonts/custom-font.js}"></script>
-    <script src="../static/assets/js/pcoded.js" th:src="@{/assets/js/pcoded.js}"></script>
-    <script src="../static/assets/js/plugins/feather.min.js" th:src="@{/assets/js/plugins/feather.min.js}"></script>
+</div>
+<!-- [ Main Content ] end -->
+<!-- Required Js -->
+<script th:src="@{/js/plugins/popper.min.js}"></script>
+<script th:src="@{/js/plugins/simplebar.min.js}"></script>
+<script th:src="@{/js/plugins/bootstrap.min.js}"></script>
+<script th:src="@{/js/fonts/custom-font.js}"></script>
+<script th:src="@{/js/pcoded.js}"></script>
+<script th:src="@{/js/plugins/feather.min.js}"></script>
 
-    <script>
-      layout_change('false');
-    </script>
-     
-    <script>
-      layout_theme_contrast_change('false');
-    </script>
-     
-    <script>
-      change_box_container('false');
-    </script>
-     
-    <script>
-      layout_caption_change('true');
-    </script>
-     
-    <script>
-      layout_rtl_change('false');
-    </script>
-     
-    <script>
-      preset_change('preset-1');
-    </script>
-     
-    <script>
-      main_layout_change('vertical');
-    </script>
+<script>
+    layout_change('false');
+</script>
 
-  </body>
-  <!-- [Body] end -->
+<script>
+    layout_theme_contrast_change('false');
+</script>
+
+<script>
+    change_box_container('false');
+</script>
+
+<script>
+    layout_caption_change('true');
+</script>
+
+<script>
+    layout_rtl_change('false');
+</script>
+
+<script>
+    preset_change('preset-1');
+</script>
+
+<script>
+    main_layout_change('vertical');
+</script>
+
+</body>
+<!-- [Body] end -->
 </html>

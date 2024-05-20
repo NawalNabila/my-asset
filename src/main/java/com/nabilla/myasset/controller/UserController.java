@@ -1,6 +1,8 @@
 package com.nabilla.myasset.controller;
 
+import com.nabilla.myasset.model.Role;
 import com.nabilla.myasset.model.User;
+import com.nabilla.myasset.service.RoleService;
 import com.nabilla.myasset.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,11 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/")
     public String viewHomepage(
@@ -28,33 +32,45 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/create")
-    public String viewCreateFormPage() {
+    @GetMapping("/users/create")
+    public String viewCreateFormPage(Model model) {
+        List<Role> roles = roleService.getList();
+        model.addAttribute("roles", roles);
+
         return "user-form";
     }
 
-    @PostMapping("/save")
+    @PostMapping("/users/save")
     public String saveUser(
-            @ModelAttribute User user,
-            Model model
+            @ModelAttribute User user
     ) {
-        String password = "1234dummy";
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(password);
-        user.setPassword(encodedPassword);
+        user.setPassword(passwordEncoder.encode("1234dummy"));
 
         userService.save(user);
 
-        return "redirect:/users/";
+        return "redirect:/";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/users/edit/{id}")
     public ModelAndView viewEditFormPage(@PathVariable(name = "id") Long id) {
         ModelAndView mav = new ModelAndView("user-edit-form");
-
+        List<Role> roles = roleService.getList();
         User user = userService.getById(id);
         mav.addObject("user", user);
+        mav.addObject("roles", roles);
 
         return mav;
+    }
+
+    @PostMapping("/users/update")
+    public String updateUser(
+            @ModelAttribute User user
+    ) {
+        User oldUser = userService.getById(user.getId());
+        user.setPassword(oldUser.getPassword());
+        userService.save(user);
+
+        return "redirect:/";
     }
 }

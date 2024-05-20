@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
 <!-- [Head] start -->
 
 <head>
@@ -19,25 +19,24 @@
     <meta name="author" content="Phoenixcoded"/>
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="../static/assets/images/favicon.svg" type="image/x-icon"
-          th:href="@{/assets/images/favicon.svg}"/>
+    <link rel="icon" type="image/x-icon"
+          th:href="@{/images/favicon.svg}"/>
 
     <!-- [Font] Family -->
-    <link rel="stylesheet" href="../static/assets/fonts/inter/inter.css" id="main-font-link"
-          th:href="@{/assets/fonts/inter/inter.css}"/>
+    <link rel="stylesheet" id="main-font-link"
+          th:href="@{/fonts/inter/inter.css}"/>
     <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="../static/assets/fonts/tabler-icons.min.css"
-          th:href="@{/assets/fonts/tabler-icons.min.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/tabler-icons.min.css}"/>
     <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="../static/assets/fonts/feather.css" th:href="@{/assets/fonts/feather.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/feather.css}"/>
     <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link rel="stylesheet" href="../static/assets/fonts/fontawesome.css" th:href="@{/assets/fonts/fontawesome.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/fontawesome.css}"/>
     <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="../static/assets/fonts/material.css" th:href="@{/assets/fonts/material.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/material.css}"/>
     <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="../static/assets/css/style.css" id="main-style-link"
-          th:href="@{/assets/css/style.css}"/>
-    <link rel="stylesheet" href="../static/assets/css/style-preset.css" th:href="@{/assets/css/style-preset.css}"/>
+    <link rel="stylesheet" id="main-style-link"
+          th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style-preset.css}"/>
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
@@ -53,9 +52,8 @@
 <div class="auth-main">
     <div class="auth-wrapper v2">
         <div class="auth-sidecontent">
-            <img src="../static/assets/images/authentication/img-auth-sideimg.jpg"
-                 th:src="@{/assets/images/authentication/img-auth-sideimg.jpg}" alt="images"
-                 class="img-fluid img-auth-side"/>
+            <img th:src="@{/images/authentication/img-auth-sideimg.jpg}" alt="images"
+                 class="img-fluid img-auth-side">
         </div>
         <div class="auth-form">
             <div class="card my-5">
@@ -64,7 +62,7 @@
                         <h4 class="text-center f-w-500 mb-3">Login with your Username</h4>
                         <div class="mb-3">
                             <input type="text" name="username" class="form-control" id="floatingInput"
-                                   placeholder="Email Address"/>
+                                   placeholder="Username"/>
                         </div>
                         <div class="mb-3">
                             <input type="password" name="password" class="form-control" id="floatingInput1"
@@ -91,12 +89,12 @@
 </div>
 <!-- [ Main Content ] end -->
 <!-- Required Js -->
-<script src="../static/assets/js/plugins/popper.min.js" th:src="@{/assets/js/plugins/popper.min.js}"></script>
-<script src="../static/assets/js/plugins/simplebar.min.js" th:src="@{/assets/js/plugins/simplebar.min.js}"></script>
-<script src="../static/assets/js/plugins/bootstrap.min.js" th:src="@{/assets/js/plugins/bootstrap.min.js}"></script>
-<script src="../static/assets/js/fonts/custom-font.js" th:src="@{/assets/js/fonts/custom-font.js}"></script>
-<script src="../static/assets/js/pcoded.js" th:src="@{/assets/js/pcoded.js}"></script>
-<script src="../static/assets/js/plugins/feather.min.js" th:src="@{/assets/js/plugins/feather.min.js}"></script>
+<script th:src="@{/js/plugins/popper.min.js}"></script>
+<script th:src="@{/js/plugins/simplebar.min.js}"></script>
+<script th:src="@{/js/plugins/bootstrap.min.js}"></script>
+<script th:src="@{/js/fonts/custom-font.js}"></script>
+<script th:src="@{/js/pcoded.js}"></script>
+<script th:src="@{/js/plugins/feather.min.js}"></script>
 
 <script>
     layout_change('false');

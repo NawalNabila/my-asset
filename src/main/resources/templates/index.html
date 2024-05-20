@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
-
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <!-- [Head] start -->
 <head>
     <title>User List | My Asset</title>
@@ -19,26 +18,26 @@
     <meta name="author" content="Phoenixcoded"/>
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="../static/assets/images/favicon.svg" type="image/x-icon"
-          th:href="@{/assets/images/favicon.svg}"/>
+    <link rel="icon" type="image/x-icon"
+          th:href="@{/images/favicon.svg}"/>
 
-    <link rel="stylesheet" href="../static/assets/css/plugins/style.css" th:href="@{/assets/css/plugins/style.css}">
+    <link rel="stylesheet" th:href="@{/css/plugins/style.css}">
     <!-- [Font] Family -->
-    <link rel="stylesheet" href="../static/assets/fonts/inter/inter.css" id="main-font-link"
-          th:href="@{/assets/fonts/inter/inter.css}"/>
+    <link rel="stylesheet" id="main-font-link"
+          th:href="@{/fonts/inter/inter.css}"/>
     <!-- [Tabler Icons] https://tablericons.com -->
-    <link rel="stylesheet" href="../static/assets/fonts/tabler-icons.min.css"
-          th:href="@{/assets/fonts/tabler-icons.min.css}"/>
+    <link rel="stylesheet"
+          th:href="@{/fonts/tabler-icons.min.css}"/>
     <!-- [Feather Icons] https://feathericons.com -->
-    <link rel="stylesheet" href="../static/assets/fonts/feather.css" th:href="@{/assets/fonts/feather.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/feather.css}"/>
     <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-    <link rel="stylesheet" href="../static/assets/fonts/fontawesome.css" th:href="@{/assets/fonts/fontawesome.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/fontawesome.css}"/>
     <!-- [Material Icons] https://fonts.google.com/icons -->
-    <link rel="stylesheet" href="../static/assets/fonts/material.css" th:href="@{/assets/fonts/material.css}"/>
+    <link rel="stylesheet" th:href="@{/fonts/material.css}"/>
     <!-- [Template CSS Files] -->
-    <link rel="stylesheet" href="../static/assets/css/style.css" id="main-style-link"
-          th:href="@{/assets/css/style.css}"/>
-    <link rel="stylesheet" href="../static/assets/css/style-preset.css" th:href="@{/assets/css/style-preset.css}"/>
+    <link rel="stylesheet" id="main-style-link"
+          th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style-preset.css}"/>
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
@@ -58,8 +57,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="flex-shrink-0">
-                            <img src="../static/assets/images/user/avatar-1.jpg"
-                                 th:src="@{/assets/images/user/avatar-1.jpg}" alt="user-image"
+                            <img th:src="@{/images/user/avatar-1.jpg}" alt="user-image"
                                  class="user-avtar wid-45 rounded-circle"/>
                         </div>
                         <div sec:authorize="isAuthenticated()" class="flex-grow-1 ms-3 me-2">
@@ -88,9 +86,9 @@
                                 <span>Lock Screen</span>
                             </a>
                             <form th:action="@{/logout}" method="post">
-                                <a type="submit">
+                                <button type="submit">
                                     <i class="ti ti-power"></i>
-                                    <span>Logout</span></a>
+                                    <span>Logout</span></button>
                             </form>
 
                         </div>
@@ -106,7 +104,7 @@
                     </svg>
                 </li>
                 <li class="pc-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a th:href="/users/" class="pc-link">
+                    <a th:href="@{/}" class="pc-link">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-user-square"></use>
@@ -218,10 +216,11 @@
                             <i class="ti ti-lock"></i>
                             <span>Lock Screen</span>
                         </a>
-                        <a th:href="@{/myasset/login/}" class="dropdown-item">
-                            <i class="ti ti-power"></i>
-                            <span>Logout</span>
-                        </a>
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="dropdown-item">
+                                <i class="ti ti-power"></i>
+                                <span>Logout</span></button>
+                        </form>
                     </div>
                 </li>
                 <li class="dropdown pc-h-item header-user-profile">
@@ -234,8 +233,8 @@
                             data-bs-auto-close="outside"
                             aria-expanded="false"
                     >
-                        <img src="../static/assets/images/user/avatar-2.jpg"
-                             th:src="@{/assets/images/user/avatar-2.jpg}" alt="user-image" class="user-avtar"/>
+                        <img
+                             th:src="@{/images/user/avatar-2.jpg}" alt="user-image" class="user-avtar"/>
                     </a>
                     <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
                         <div class="dropdown-header d-flex align-items-center justify-content-between">
@@ -246,8 +245,7 @@
                                  style="max-height: calc(100vh - 225px)">
                                 <div class="d-flex mb-1">
                                     <div class="flex-shrink-0">
-                                        <img src="../static/assets/images/user/avatar-2.jpg"
-                                             th:src="@{/assets/images/user/avatar-2.jpg}" alt="user-image"
+                                        <img th:src="@{/images/user/avatar-2.jpg}" alt="user-image"
                                              class="user-avtar wid-35"/>
                                     </div>
                                     <div class="flex-grow-1 ms-3" sec:authorize="isAuthenticated()">
@@ -258,13 +256,13 @@
                                 <hr class="border-secondary border-opacity-50"/>
                                 <div class="d-grid mb-3">
                                     <form th:action="@{/logout}" method="post">
-                                        <a type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary">
                                             <svg class="pc-icon me-2">
                                                 <use xlink:href="#custom-logout-1-outline"></use>
                                             </svg
                                             >
                                             Logout
-                                        </a>
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -276,6 +274,7 @@
     </div>
 </header>
 <!-- [ Header ] end -->
+
 <!-- [ Main Content ] start -->
 <div class="pc-container">
     <div class="pc-content">
@@ -285,7 +284,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-12">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a th:href="@{/users/}">Home</a></li>
+                            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">User</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">User List</a></li>
                         </ul>
@@ -333,8 +332,7 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0">
-                                                <img src="../static/assets/images/user/avatar-1.jpg"
-                                                     th:src="@{/assets/images/user/avatar-1.jpg}" alt="user image"
+                                                <img th:src="@{/images/user/avatar-1.jpg}" alt="user image"
                                                      class="img-radius wid-40">
                                             </div>
                                             <div class="flex-grow-1 ms-3">
@@ -344,7 +342,11 @@
                                     </td>
                                     <td th:text="${ob.username}"></td>
                                     <td th:text="${ob.email}"></td>
-                                    <td><span class="badge text-bg-success">Admin</span></td>
+                                    <td>
+                                        <span th:each="rl:${ob.roles}">
+                                            <span class="badge text-bg-success" th:text="${rl.name}"></span><br><br>
+                                        </span>
+                                    </td>
                                     <td>
                                         <a th:href="@{'/users/edit/' + ${ob.id}}" class="avtar avtar-xs btn-link-secondary">
                                             <i data-feather="edit"></i>
@@ -375,12 +377,12 @@
     </div>
 </footer>
 <!-- Required Js -->
-<script src="../static/assets/js/plugins/popper.min.js" th:src="@{/assets/js/plugins/popper.min.js}"></script>
-<script src="../static/assets/js/plugins/simplebar.min.js" th:src="@{/assets/js/plugins/simplebar.min.js}"></script>
-<script src="../static/assets/js/plugins/bootstrap.min.js" th:src="@{/assets/js/plugins/bootstrap.min.js}"></script>
-<script src="../static/assets/js/fonts/custom-font.js" th:src="@{/assets/js/fonts/custom-font.js}"></script>
-<script src="../static/assets/js/pcoded.js" th:src="@{/assets/js/pcoded.js}"></script>
-<script src="../static/assets/js/plugins/feather.min.js" th:src="@{/assets/js/plugins/feather.min.js}"></script>
+<script th:src="@{/js/plugins/popper.min.js}"></script>
+<script th:src="@{/js/plugins/simplebar.min.js}"></script>
+<script th:src="@{/js/plugins/bootstrap.min.js}"></script>
+<script th:src="@{/js/fonts/custom-font.js}"></script>
+<script th:src="@{/js/pcoded.js}"></script>
+<script th:src="@{/js/plugins/feather.min.js}"></script>
 
 <script>
     layout_change('false');
@@ -412,7 +414,7 @@
 
 
 <script type="module">
-    import {DataTable} from "../static/assets/js/plugins/module.js"
+    import {DataTable} from "/js/plugins/module.js"
     window.dt = new DataTable("#pc-dt-simple");
 </script>
 

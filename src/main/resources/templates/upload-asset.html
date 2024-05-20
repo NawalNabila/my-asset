@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <!-- [Head] start -->
 
 <head>
@@ -19,26 +19,26 @@
   <meta name="author" content="Phoenixcoded" />
 
   <!-- [Favicon] icon -->
-  <link rel="icon" href="../static/assets/images/favicon.svg" type="image/x-icon" th:href="@{/assets/images/favicon.svg}"/>
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/x-icon" th:href="@{/assets/images/favicon.svg}"/>
 
   <!-- [Page specific CSS] start -->
   <!-- fileupload-custom css -->
-  <link rel="stylesheet" href="../static/assets/css/plugins/dropzone.min.css" th:href="@{/assets/css/plugins/dropzone.min.css}" />
+  <link rel="stylesheet" href="/assets/css/plugins/dropzone.min.css" th:href="@{/assets/css/plugins/dropzone.min.css}" />
   <!-- [Page specific CSS] end -->
-  <link rel="stylesheet" href="../static/assets/css/plugins/style.css" th:href="@{/assets/css/plugins/style.css}">
+  <link rel="stylesheet" href="/assets/css/plugins/style.css" th:href="@{/assets/css/plugins/style.css}">
   <!-- [Font] Family -->
-  <link rel="stylesheet" href="../static/assets/fonts/inter/inter.css" id="main-font-link" th:href="@{/assets/fonts/inter/inter.css}"/>
+  <link rel="stylesheet" href="/assets/fonts/inter/inter.css" id="main-font-link" th:href="@{/assets/fonts/inter/inter.css}"/>
   <!-- [Tabler Icons] https://tablericons.com -->
-  <link rel="stylesheet" href="../static/assets/fonts/tabler-icons.min.css" th:href="@{/assets/fonts/tabler-icons.min.css}"/>
+  <link rel="stylesheet" href="/assets/fonts/tabler-icons.min.css" th:href="@{/assets/fonts/tabler-icons.min.css}"/>
   <!-- [Feather Icons] https://feathericons.com -->
-  <link rel="stylesheet" href="../static/assets/fonts/feather.css" th:href="@{/assets/fonts/feather.css}"/>
+  <link rel="stylesheet" href="/assets/fonts/feather.css" th:href="@{/assets/fonts/feather.css}"/>
   <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-  <link rel="stylesheet" href="../static/assets/fonts/fontawesome.css" th:href="@{/assets/fonts/fontawesome.css}"/>
+  <link rel="stylesheet" href="/assets/fonts/fontawesome.css" th:href="@{/assets/fonts/fontawesome.css}"/>
   <!-- [Material Icons] https://fonts.google.com/icons -->
-  <link rel="stylesheet" href="../static/assets/fonts/material.css" th:href="@{/assets/fonts/material.css}"/>
+  <link rel="stylesheet" href="/assets/fonts/material.css" th:href="@{/assets/fonts/material.css}"/>
   <!-- [Template CSS Files] -->
-  <link rel="stylesheet" href="../static/assets/css/style.css" id="main-style-link" th:href="@{/assets/css/style.css}"/>
-  <link rel="stylesheet" href="../static/assets/css/style-preset.css" th:href="@{/assets/css/style-preset.css}"/>
+  <link rel="stylesheet" href="/assets/css/style.css" id="main-style-link" th:href="@{/assets/css/style.css}"/>
+  <link rel="stylesheet" href="/assets/css/style-preset.css" th:href="@{/assets/css/style-preset.css}"/>
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
@@ -57,7 +57,7 @@
           <div class="card-body">
             <div class="d-flex align-items-center">
               <div class="flex-shrink-0">
-                <img src="../static/assets/images/user/avatar-1.jpg" th:src="@{/assets/images/user/avatar-1.jpg}" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+                <img src="/assets/images/user/avatar-1.jpg" th:src="@{/assets/images/user/avatar-1.jpg}" alt="user-image" class="user-avtar wid-45 rounded-circle" />
               </div>
               <div class="flex-grow-1 ms-3 me-2">
                 <h6 class="mb-0">Jonh Smith</h6>
@@ -228,7 +228,7 @@
                     data-bs-auto-close="outside"
                     aria-expanded="false"
             >
-              <img src="../static/assets/images/user/avatar-2.jpg" th:src="@{/assets/images/user/avatar-2.jpg}" alt="user-image" class="user-avtar" />
+              <img src="/assets/images/user/avatar-2.jpg" th:src="@{/assets/images/user/avatar-2.jpg}" alt="user-image" class="user-avtar" />
             </a>
             <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
               <div class="dropdown-header d-flex align-items-center justify-content-between">
@@ -238,7 +238,7 @@
                 <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 225px)">
                   <div class="d-flex mb-1">
                     <div class="flex-shrink-0">
-                      <img src="../static/assets/images/user/avatar-2.jpg" th:src="@{/assets/images/user/avatar-2.jpg}" alt="user-image" class="user-avtar wid-35" />
+                      <img src="/assets/images/user/avatar-2.jpg" th:src="@{/assets/images/user/avatar-2.jpg}" alt="user-image" class="user-avtar wid-35" />
                     </div>
                     <div class="flex-grow-1 ms-3">
                       <h6 class="mb-1">Carson Darrin 🖖</h6>
@@ -332,12 +332,12 @@
     </div>
   </footer>
   <!-- Required Js -->
-  <script src="../static/assets/js/plugins/popper.min.js" th:src="@{/assets/js/plugins/popper.min.js}"></script>
-  <script src="../static/assets/js/plugins/simplebar.min.js" th:src="@{/assets/js/plugins/simplebar.min.js}"></script>
-  <script src="../static/assets/js/plugins/bootstrap.min.js" th:src="@{/assets/js/plugins/bootstrap.min.js}"></script>
-  <script src="../static/assets/js/fonts/custom-font.js" th:src="@{/assets/js/fonts/custom-font.js}"></script>
-  <script src="../static/assets/js/pcoded.js" th:src="@{/assets/js/pcoded.js}"></script>
-  <script src="../static/assets/js/plugins/feather.min.js" th:src="@{/assets/js/plugins/feather.min.js}"></script>
+  <script src="/assets/js/plugins/popper.min.js" th:src="@{/assets/js/plugins/popper.min.js}"></script>
+  <script src="/assets/js/plugins/simplebar.min.js" th:src="@{/assets/js/plugins/simplebar.min.js}"></script>
+  <script src="/assets/js/plugins/bootstrap.min.js" th:src="@{/assets/js/plugins/bootstrap.min.js}"></script>
+  <script src="/assets/js/fonts/custom-font.js" th:src="@{/assets/js/fonts/custom-font.js}"></script>
+  <script src="/assets/js/pcoded.js" th:src="@{/assets/js/pcoded.js}"></script>
+  <script src="/assets/js/plugins/feather.min.js" th:src="@{/assets/js/plugins/feather.min.js}"></script>
 
   <script>
   layout_change('false');
@@ -368,7 +368,7 @@
 </script>
 <!-- [Page Specific JS] start -->
     <!-- file-upload Js -->
-    <script src="../static/assets/js/plugins/dropzone-amd-module.min.js" th:src="@{/assets/js/plugins/dropzone-amd-module.min.js}"></script>
+    <script src="/assets/js/plugins/dropzone-amd-module.min.js" th:src="@{/assets/js/plugins/dropzone-amd-module.min.js}"></script>
     <!-- [Page Specific JS] end -->
 
 </body>
