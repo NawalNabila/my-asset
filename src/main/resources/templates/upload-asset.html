@@ -296,15 +296,21 @@
               <div class="card-header">
                 <h5>Upload New Assets</h5>
               </div>
-              <div class="card-body">
-                <form action="assets/json/file-upload.php" class="dropzone">
-                  <div class="fallback">
-                    <input name="file" type="file" multiple />
+
+                <form th:action="@{/myasset/report/save}" method="post" class="dropzone" enctype="multipart/form-data">
+                  <div class="card-body">
+                    <div class="fallback">
+                      <input name="file" type="file"/>
+                    </div>
+                  </div>
+                  <div class="card-footer bg-white">
+                  </div>
+                  <div class="text-center m-t-20">
+                    <button type="submit" class="btn btn-primary">Upload Now</button>
                   </div>
                 </form>
-                <div class="text-center m-t-20">
-                  <button class="btn btn-primary">Upload Now</button>
-                </div>
+              <div th:if="${message!=null}"  class="card-footer bg-white text-info">
+                <span th:text="${message}"></span>
               </div>
             </div>
           </div>
