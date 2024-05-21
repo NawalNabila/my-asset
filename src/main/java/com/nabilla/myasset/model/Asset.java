@@ -1,40 +1,40 @@
 package com.nabilla.myasset.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "assets")
 public class Asset {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String customerName;
     private String customerAddress;
     private String assetCategory;
     private String currency;
-    private float grossInterest;
-    private float tax;
-    private float yearEndBalance;
-//    private LocalDate period;
-//    private LocalDateTime createdDate;
-//    private LocalDateTime updatedDate;
+    private Float grossInterest;
+    private Float tax;
+    private Float yearEndBalance;
+    private Date period;
 
-    public Asset(String s, String s1, String s2, String s3, float v, float v1, float v2) {
-        this.customerName = s;
-        this.customerAddress = s1;
-        this.assetCategory = s2;
-        this.currency = s3;
-        this.grossInterest = v;
-        this.tax = v1;
-        this.yearEndBalance = v2;
+    public Asset(String customerName, String customerAddress, String assetCategory,
+                 String currency, Float grossInterest, Float tax, Float yearEndBalance, Date period) {
+        this.customerName = customerName;
+        this.customerAddress = customerAddress;
+        this.assetCategory = assetCategory;
+        this.currency = currency;
+        this.grossInterest = grossInterest;
+        this.tax = tax;
+        this.yearEndBalance = yearEndBalance;
+        this.period = period;
     }
 }

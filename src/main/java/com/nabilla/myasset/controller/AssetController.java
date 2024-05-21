@@ -1,36 +1,33 @@
 package com.nabilla.myasset.controller;
 
-import com.nabilla.myasset.helper.CSVHelper;
+import com.nabilla.myasset.model.Asset;
 import com.nabilla.myasset.service.AssetService;
-import com.opencsv.exceptions.CsvException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.support.MultipartFilter;
 
-import java.io.IOException;
+import java.util.List;
 
 @Controller
-@RequestMapping("/assets")
+@RequestMapping("/report")
 public class AssetController {
 
     @Autowired
     AssetService assetService;
 
-    @Bean
-    @Order(0)
-    public MultipartFilter multipartFilter() {
-        MultipartFilter multipartFilter = new MultipartFilter();
-        multipartFilter.setMultipartResolverBeanName("multipartReso‌​lver");
-        return multipartFilter;
+    public static String TYPE = "text/csv";
+
+    public static boolean hasCSVFormat(MultipartFile file) {
+        return TYPE.equals(file.getContentType());
     }
 
     @GetMapping("/")
-    public String showReportPage() {
+    public String showReportPage(Model model) {
+        List<Asset> assets = assetService.getList();
+        model.addAttribute("list", assets);
+
         return "asset-report";
     }
 
@@ -40,17 +37,36 @@ public class AssetController {
     }
 
     @GetMapping("/upload")
-    public String showUploadPage() {
+    public String showUploadPage(Model model) {
+
         return "upload-asset";
     }
 
     @PostMapping("/save")
     public String saveReport(
             @RequestParam("file") MultipartFile file,
-            Model model) throws IOException, CsvException {
-        assetService.saveCSVData(file);
-        String message = "Records ["+ file.getOriginalFilename() +"] are saved successfully!";
+            Model model) {
+        String message = "";
+
+        if (hasCSVFormat(file)) {
+            try {
+                assetService.save(file);
+
+                message = "Records [" + file.getOriginalFilename() + "] are saved successfully!";
+                model.addAttribute("message", message);
+
+                return "redirect:/report/";
+            } catch (Exception e) {
+                message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+                model.addAttribute("message", message);
+
+                return "redirect:/report/";
+            }
+        }
+
+        message = "Please upload csv format only!";
         model.addAttribute("message", message);
-        return "role";
+
+        return "redirect:/report/";
     }
 }

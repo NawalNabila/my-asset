@@ -1,22 +1,24 @@
 package com.nabilla.myasset.service.impl;
 
 import com.nabilla.myasset.model.Asset;
-import com.nabilla.myasset.model.User;
 import com.nabilla.myasset.repository.AssetRepository;
 import com.nabilla.myasset.service.AssetService;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class AssetServiceImpl implements AssetService {
@@ -25,7 +27,8 @@ public class AssetServiceImpl implements AssetService {
     AssetRepository repo;
 
     @Override
-    public void saveCSVData(MultipartFile file) throws IOException, CsvException {
+    @Transactional (rollbackOn = SQLException.class)
+    public void save(MultipartFile file) throws IOException, CsvException {
         String FILE_PATH = "/Users/hanryvernando/Myb/";
         CSVReader reader = new CSVReader(new FileReader(FILE_PATH + file.getOriginalFilename()));
 
@@ -33,10 +36,15 @@ public class AssetServiceImpl implements AssetService {
 
         List<Asset> assets = new ArrayList<>();
 
-        LocalDateTime createdDate = LocalDateTime.now();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
 
         for (String[] row : rows) {
-            System.out.println(row[0] + "," + row[1] + "," + row[2] + "," + row[3]);
+            Date period = null;
+            try {
+                period = formatter.parse(row[7]);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
 
             Asset ast = new Asset(
                         row[0],
@@ -45,27 +53,17 @@ public class AssetServiceImpl implements AssetService {
                         row[3],
                         Float.parseFloat(row[4]),
                         Float.parseFloat(row[5]),
-                        Float.parseFloat(row[6])
+                        Float.parseFloat(row[6]),
+                        period
                 );
-//            ast.setCustomerName(row[0]);
-//            ast.setCustomerAddress(row[1]);
-//            ast.setAssetCategory(row[2]);
-//            ast.setCurrency(row[3]);
-//            ast.setGrossInterest(Float.parseFloat(row[4]));
-//            ast.setTax(Float.parseFloat(row[5]));
-//            ast.setYearEndBalance(Float.parseFloat(row[6]));
-//            ast.setPeriod(LocalDate.parse(row[7]));
-//            ast.setCreatedDate(createdDate);
-//            ast.setUpdatedDate(createdDate);
 
             assets.add(ast);
         }
         repo.saveAll(assets);
-        System.out.println("Berhasil Add ke Database");
     }
 
     @Override
-    public List<Asset> getAllAssets() {
+    public List<Asset> getList() {
         return repo.findAll();
     }
 }

@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface AssetService {
 
-    public void saveCSVData(MultipartFile file) throws IOException, CsvException;
-    public List<Asset> getAllAssets();
+    public void save(MultipartFile file) throws IOException, CsvException;
+    public List<Asset> getList();
 }
